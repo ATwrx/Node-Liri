@@ -1,8 +1,7 @@
 const spotify = require('spotify');
 const request = require('request');
 const twitter = require('twitter');
-const 
-const spotifyID = 'ced41733d1f04182a191baed2f7b00cc';
+const dotenv = require('dotenv').config(); 
 
 const program = process.argv[2];
 const command = process.argv[3];
