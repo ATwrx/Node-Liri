@@ -1,8 +1,8 @@
-const fs = require('fs');
 const spotify = require('spotify');
-const spotifyID = 'ced41733d1f04182a191baed2f7b00cc';
 const request = require('request');
 const twitter = require('twitter');
+const 
+const spotifyID = 'ced41733d1f04182a191baed2f7b00cc';
 
 const program = process.argv[2];
 const command = process.argv[3];
