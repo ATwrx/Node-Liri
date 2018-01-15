@@ -18,7 +18,7 @@ switch (program) {
         spotifySearch(command)
         break;
     case 'twitter':
-        twitter(command)
+        postTwitter(command)
         break;
 }
 
@@ -47,3 +47,5 @@ Written by ${data.Writer}`);
 function spotifySearch(command) {
 console.log("spotify")}  
 
+function postTwitter(command) {
+console.log('tweeter')}
