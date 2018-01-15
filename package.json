@@ -1,18 +1,19 @@
 {
-  "name": "cli-app",
+  "name": "liri-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "A. Thompson",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "request": "^2.83.0",
     "require": "^2.4.20",
     "spotify": "^0.3.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "Homework for trilogy edu."
 }
