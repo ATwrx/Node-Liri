@@ -40,10 +40,11 @@ function movieSearch(command) {
         }
         let data = JSON.parse(body);
         console.log(`
-Title: ${data.Title} (${data.Year} )${data.Rated}
-Genre: ${data.Genre}        Runtime: ${data.Runtime}
+Title: ${data.Title} (${data.Year}) ${data.Rated}
+Genre: ${data.Genre}  Runtime: ${data.Runtime}
 
-    ${data.Plot}
+Plot Summary:
+${data.Plot}
 
 Starring: ${data.Actors}
 Directed by ${data.Director}
