@@ -1,9 +1,20 @@
 const dotenv = require('dotenv').config(); 
+const fs = require('fs')
 const request = require('request');
 
-const spotify = new Spotify(keys.spotify)
-const twitter = new Twitter(keys.twitter)
+const Twitter = require('twitter');
+let twitter = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+})
 
+const SpotifyWebApi = require('spotify-web-api-node')
+let spotify = new SpotifyWebApi({
+    clientId: process.env.SPOTIFY_ID,
+    clientSecret: process.env.SPOTIFY_SECRET
+});
 const program = process.argv[2];
 const command = process.argv[3];
 
