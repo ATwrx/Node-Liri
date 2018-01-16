@@ -1,35 +1,33 @@
-const spotify = require('spotify');
-const request = require('request');
-const twitter = require('twitter');
 const dotenv = require('dotenv').config(); 
+const request = require('request');
+
+const spotify = new Spotify(keys.spotify)
+const twitter = new Twitter(keys.twitter)
 
 const program = process.argv[2];
 const command = process.argv[3];
-const args1 = process.argv[4];
-const args2 = process.argv[5];
 
-//Switch Statement
+// Switch Statement
 switch (program) {
-    case 'movie':
-        searchMovie(command);
+    case 'movie-this':
+        movieSearch(command);
         break;
-    case 'spotify':
+    case 'spotify-this-song':
         spotifySearch(command)
         break;
-    case 'twitter':
+    case 'my-tweets':
         postTwitter(command)
         break;
 }
 
-//OMDB Search function
-function searchMovie(command) {
+// Movie Search function
+function movieSearch(command) {
     let queryUrl = 'http://www.omdbapi.com/?t=' + command + '&y=&plot=short&apikey=trilogy';
     request(queryUrl, (err, res, body) => {
         if (err) {
             console.log(err);
         }
         let data = JSON.parse(body);
-        console.log(' ');
         console.log(`
 Title: ${data.Title} (${data.Year} )${data.Rated}
 Genre: ${data.Genre}        Runtime: ${data.Runtime}
@@ -46,5 +44,6 @@ Written by ${data.Writer}`);
 function spotifySearch(command) {
 console.log("spotify")}  
 
+// Twitter post funtion
 function postTwitter(command) {
 console.log('tweeter')}
