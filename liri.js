@@ -1,20 +1,25 @@
-const dotenv = require('dotenv').config(); 
+var dotenv = require('dotenv').config({path:'./keys.js'}); 
+if (dotenv.err) {
+throw dotenv.err}
+const buf = new Buffer('BASIC=basic')
+var config = dotenv.parse(buf)
+console.log(process.env)
 const fs = require('fs')
 const request = require('request');
+const spotify = require('spotify')
+/*const spotifyApi = new SpotifyWebApi({*/
+    //clientId: process.env.SPOTIFY_ID,
+    //clientSecret: process.env.SPOTIFY_SECRET
+//});
 
 const Twitter = require('twitter');
-let twitter = new Twitter({
+const twitter = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
-const SpotifyWebApi = require('spotify-web-api-node')
-let spotify = new SpotifyWebApi({
-    clientId: process.env.SPOTIFY_ID,
-    clientSecret: process.env.SPOTIFY_SECRET
-});
 const program = process.argv[2];
 const command = process.argv[3];
 
@@ -54,8 +59,17 @@ Written by ${data.Writer}`);
 
 // Spotify search funtion
 function spotifySearch(command) {
-console.log("spotify")}  
+    spotify.search({ type: 'track', query: command, limit: 20, id: spotify.id}, (err, data) => {
+       if ( err ) {
+        console.log('Error occurred: ' + err)
+        return
+       } 
+        console.log(data)
+    })
+ }  
 
 // Twitter post funtion
 function postTwitter(command) {
-console.log('tweeter')}
+    console.log(process.env)
+console.log(config)
+}
