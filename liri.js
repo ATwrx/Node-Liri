@@ -2,8 +2,7 @@ const dotenv = require('dotenv').config();
 if (dotenv.err) {
   throw dotenv.err;
 }
-const env = dotenv.parsed;
-
+const env = dotenv.parsed
 const fs = require('fs');
 const request = require('request');
 
@@ -19,10 +18,8 @@ const client = new Twitter({
   access_token_key: env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: env.TWITTER_ACCESS_TOKEN_SECRET,
 });
-
 const program = process.argv[2];
 const command = process.argv[3];
-//console.log(env)
 
 // Switch Statement
 switch (program) {
@@ -59,13 +56,13 @@ Written by ${data.Writer}`);
   });
 }
 
+// TODO: make this shiz mo betta
 // Spotify search funtion
 function spotifySearch(command) {
   if (command === undefined) {
     command = 'Never gonna give you up';
   }
-  spotify.search(
-    {
+  spotify.search({
       type: 'track',
       query: command,
       limit: 3
@@ -79,20 +76,31 @@ function spotifySearch(command) {
       for (song in songs) {
         let s = songs[song];
         let a = []
-        for (artist in s.artists){
-          let name = s.artists[artist].name 
+        for (artist in s.artists) {
+          let name = s.artists[artist].name
           a.push(name)
         }
         console.log(s);
         console.log(` 
 song name: ${s.name} 
 artist(s): ${JSON.stringify(a, 2)}
-
 preview song: ${s.preview_url}
             `)
       }
-    }
-  );
+    });
 }
+
+// TODO: Change to request
 // Twitter post funtion
-function postTwitter(command) {}
+function postTwitter(command) {
+  client.post('statuses/update', {
+    status: command
+  }, (err, tweet, res) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(tweet)
+      console.log(res)
+    }
+  })
+}
